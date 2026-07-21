@@ -4,6 +4,7 @@ import type { Idea, IdeaStatus, Theme } from './types'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { ThemeCard } from './components/ThemeCard'
 import { TrendsPanel } from './components/TrendsPanel'
+import { ReferencePanel } from './components/ReferencePanel'
 import { IdeaGenerator } from './components/IdeaGenerator'
 import { TextStoryGenerator } from './components/TextStoryGenerator'
 import { KanbanBoard } from './components/KanbanBoard'
@@ -99,6 +100,8 @@ function App() {
         <TextStoryGenerator theme={selectedTheme} onAdd={addIdea} />
 
         <TrendsPanel />
+
+        <ReferencePanel />
 
         <KanbanBoard ideas={ideas} themesById={themesById} onMove={moveIdea} onDelete={deleteIdea} />
       </main>
