@@ -1,0 +1,41 @@
+{
+  "fetchedAt": "2026-07-21",
+  "trends": [
+    {
+      "id": "audio-absurdista",
+      "platform": "Ambos",
+      "title": "Áudio absurdista / lip sync inesperado",
+      "description": "Áudios fora do comum aplicados a situações do dia a dia estão bombando — um único lip sync de caminhoneiro bateu 336 milhões de views. Pode funcionar bem pra mostrar bastidor de golfe ou da rotina de faculdade com humor."
+    },
+    {
+      "id": "chair-sit-documentary",
+      "platform": "Ambos",
+      "title": "Formato \"Netflix Documentary\" (chair-sit)",
+      "description": "Vídeo estilo entrevista/documentário, sentado, contando uma história pessoal com tom dramático-cômico. Ótimo pra contar a expectativa do intercâmbio pra China ou uma virada no trabalho/faculdade."
+    },
+    {
+      "id": "carrossel-nostalgico",
+      "platform": "Instagram",
+      "title": "Carrossel nostálgico / homenagem",
+      "description": "Carrosséis relembrando uma fase, pessoa ou conquista. Bom pra fechar um ciclo (ex: fim de semestre, despedida antes do intercâmbio)."
+    },
+    {
+      "id": "subtitle-gratitude",
+      "platform": "Instagram",
+      "title": "Subtitle Gratitude Format",
+      "description": "Vídeo curto com legenda tipo \"lista de gratidão\" narrando conquistas recentes. Funciona bem pra fechar posts sobre progresso no golfe ou marcos da faculdade/trabalho."
+    },
+    {
+      "id": "baixa-producao",
+      "platform": "Ambos",
+      "title": "Baixa produção, single-take",
+      "description": "Vídeos gravados em um take só, sem edição pesada, estão performando melhor que conteúdo polido. Reduz a barreira pra postar mais vezes."
+    },
+    {
+      "id": "hashtags-especificas",
+      "platform": "TikTok",
+      "title": "1 a 5 hashtags específicas",
+      "description": "Posts com hashtags descritivas (não genéricas) recebem cerca de 5% mais views e quase 10% mais interações. Use 1 a 5 tags direto ao ponto (ex: #intercambiochina em vez de #viagem)."
+    }
+  ]
+}
