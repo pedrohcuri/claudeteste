@@ -16,6 +16,14 @@ export const THEMES: Theme[] = [
       'O que aprendi assistindo profissionais',
       'Rotina de aquecimento antes de jogar',
     ],
+    backgrounds: [
+      'Bola rolando até o buraco, câmera baixa',
+      'Swing em câmera lenta contra o céu',
+      'Taco batendo na bola, close no impacto',
+      'Caminhando pelo fairway ao amanhecer',
+      'Orvalho na grama antes do primeiro tee',
+      'Carrinho de golfe andando entre as árvores',
+    ],
   },
   {
     id: 'faculdade',
@@ -31,6 +39,14 @@ export const THEMES: Theme[] = [
       'Organização: como eu planejo a semana',
       'Reagir a um mito sobre o seu curso',
       'O que eu faria diferente no primeiro período',
+    ],
+    backgrounds: [
+      'Caderno sendo escrito, caneta em close',
+      'Andando pelo corredor/campus com a mochila',
+      'Xícara de café fumegando na mesa de estudo',
+      'Páginas de livro sendo viradas',
+      'Luz entrando pela janela da biblioteca',
+      'Mãos organizando material em cima da mesa',
     ],
   },
   {
@@ -48,6 +64,14 @@ export const THEMES: Theme[] = [
       'O que mudou desde que você começou',
       'A pergunta que mais te fazem sobre sua área',
     ],
+    backgrounds: [
+      'Digitando no notebook, close no teclado',
+      'Café esfriando do lado do computador',
+      'Vista da janela do escritório',
+      'Post-its sendo colados no mural',
+      'Mão organizando papéis na mesa',
+      'Luz da cidade ao entardecer pela janela',
+    ],
   },
   {
     id: 'intercambio',
@@ -63,6 +87,14 @@ export const THEMES: Theme[] = [
       'O que estou estudando antes de embarcar',
       'Reação da família e amigos à notícia',
       'O que não pode faltar na mala',
+    ],
+    backgrounds: [
+      'Mala sendo fechada / arrumada',
+      'Passaporte e passagem em cima da mesa',
+      'App de tradução ou mapa no celular',
+      'Avião decolando visto pela janela',
+      'Relógio marcando o fuso horário de destino',
+      'Contagem regressiva marcada no calendário',
     ],
   },
 ]

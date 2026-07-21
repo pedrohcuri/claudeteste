@@ -48,9 +48,21 @@ export function KanbanBoard({ ideas, themesById, onMove, onDelete }: Props) {
                         borderRadius: '2px',
                       }}
                     >
-                      <div className="eyebrow flex items-center gap-1 mb-1.5" style={{ color: 'var(--text-faint)' }}>
+                      <div className="eyebrow flex items-center gap-1.5 mb-1.5" style={{ color: 'var(--text-faint)' }}>
                         <span>{theme?.emoji}</span>
                         <span>{theme?.label}</span>
+                        {idea.format === 'texto7s' && (
+                          <span
+                            style={{
+                              color: 'var(--accent-strong)',
+                              border: '1px solid var(--accent)',
+                              borderRadius: '999px',
+                              padding: '0 0.4em',
+                            }}
+                          >
+                            7s
+                          </span>
+                        )}
                       </div>
                       <p className="mb-2" style={{ color: 'var(--text)' }}>
                         {idea.title}

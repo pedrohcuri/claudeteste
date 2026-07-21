@@ -6,6 +6,7 @@ export interface Theme {
   emoji: string
   color: string
   angles: string[]
+  backgrounds: string[]
 }
 
 export interface Trend {
@@ -18,6 +19,8 @@ export interface Trend {
 
 export type IdeaStatus = 'ideia' | 'roteiro' | 'gravado' | 'postado'
 
+export type IdeaFormat = 'padrao' | 'texto7s'
+
 export interface Idea {
   id: string
   themeId: ThemeId
@@ -25,5 +28,6 @@ export interface Idea {
   notes: string
   status: IdeaStatus
   trendRef?: string
+  format?: IdeaFormat
   createdAt: string
 }

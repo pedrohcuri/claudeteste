@@ -5,6 +5,7 @@ import { useLocalStorage } from './hooks/useLocalStorage'
 import { ThemeCard } from './components/ThemeCard'
 import { TrendsPanel } from './components/TrendsPanel'
 import { IdeaGenerator } from './components/IdeaGenerator'
+import { TextStoryGenerator } from './components/TextStoryGenerator'
 import { KanbanBoard } from './components/KanbanBoard'
 
 const NUDGES = [
@@ -94,6 +95,8 @@ function App() {
         </section>
 
         <IdeaGenerator theme={selectedTheme} onAdd={addIdea} />
+
+        <TextStoryGenerator theme={selectedTheme} onAdd={addIdea} />
 
         <TrendsPanel />
 
