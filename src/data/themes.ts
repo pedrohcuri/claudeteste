@@ -12,6 +12,9 @@ export const THEMES: Theme[] = [
       'Antes/depois de um progresso técnico (swing, tacada, handicap)',
       'Equipamento: o que vale a pena e o que não vale',
       'Reagir a uma jogada profissional recente',
+      'Comparação: minha primeira tacada x agora',
+      'O que aprendi assistindo profissionais',
+      'Rotina de aquecimento antes de jogar',
     ],
   },
   {
@@ -25,6 +28,9 @@ export const THEMES: Theme[] = [
       'Bastidor de prova, trabalho em grupo ou apresentação',
       'Antes/depois: expectativa x realidade da faculdade',
       'Dica rápida pra quem está entrando no curso',
+      'Organização: como eu planejo a semana',
+      'Reagir a um mito sobre o seu curso',
+      'O que eu faria diferente no primeiro período',
     ],
   },
   {
@@ -38,6 +44,9 @@ export const THEMES: Theme[] = [
       'Ferramenta ou hábito que aumentou sua produtividade',
       'Um dia na minha vida profissional',
       'Antes/depois da carreira: onde comecei x onde estou',
+      'Reunião ou entrega que quase deu errado',
+      'O que mudou desde que você começou',
+      'A pergunta que mais te fazem sobre sua área',
     ],
   },
   {
@@ -51,6 +60,9 @@ export const THEMES: Theme[] = [
       'Bastidor da papelada/visto/preparação',
       'Primeiras impressões (guardar pra quando chegar)',
       'Por que escolhi a China / o que mais me anima',
+      'O que estou estudando antes de embarcar',
+      'Reação da família e amigos à notícia',
+      'O que não pode faltar na mala',
     ],
   },
 ]
