@@ -5,7 +5,7 @@ export const THEMES: Theme[] = [
     id: 'golfe',
     label: 'Golfe',
     emoji: '⛳',
-    color: '#2f7d4f',
+    color: '#3f7d4a',
     angles: [
       'Bastidor de um dia de treino ou de uma rodada',
       'Erro comum + como você corrigiu',
@@ -18,7 +18,7 @@ export const THEMES: Theme[] = [
     id: 'faculdade',
     label: 'Faculdade',
     emoji: '🎓',
-    color: '#2f6fed',
+    color: '#3763c9',
     angles: [
       'Rotina de estudos / "um dia na minha vida"',
       'Método ou ferramenta que salvou seu semestre',
@@ -31,7 +31,7 @@ export const THEMES: Theme[] = [
     id: 'trabalho',
     label: 'Trabalho',
     emoji: '💼',
-    color: '#a0522d',
+    color: '#7a5a34',
     angles: [
       'Bastidor de um projeto ou entrega',
       'Lição aprendida com um erro no trabalho',
@@ -44,7 +44,7 @@ export const THEMES: Theme[] = [
     id: 'intercambio',
     label: 'Intercâmbio pra China',
     emoji: '🇨🇳',
-    color: '#d1362f',
+    color: '#a83c2e',
     angles: [
       'Contagem regressiva + o que está na mala',
       'Expectativa antes de embarcar (medos, ansiedade, planos)',

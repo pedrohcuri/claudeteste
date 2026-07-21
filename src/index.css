@@ -1,15 +1,190 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Bora Postar — design tokens
+   Concept: a director's viewfinder / contact sheet. Warm paper and
+   ink instead of default greys, one golden-hour accent, a small
+   "rec" mark for the live/momentum indicator, hairline rules
+   instead of card shadows, tabular timecodes for dates & counts.
+   Category colors (golf/faculdade/trabalho/intercâmbio) are
+   semantic tags, kept separate from the accent.
+----------------------------------------------------------------- */
+
+:root {
+  --ink: #1c1810;
+  --paper: #f6f3ea;
+  --paper-raised: #fffdf8;
+  --line: #ddd5bf;
+  --line-soft: #eae4d3;
+  --text: #2b2718;
+  --text-soft: #726b56;
+  --text-faint: #9a927a;
+  --accent: #c8801e;
+  --accent-strong: #a8690f;
+  --accent-ink: #2b1701;
+  --accent-tint: #f1e0c3;
+  --rec: #d8432f;
+
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f1ece0;
+    --paper: #16140e;
+    --paper-raised: #201c14;
+    --line: #3a3323;
+    --line-soft: #2a251a;
+    --text: #efe9da;
+    --text-soft: #b3a98d;
+    --text-faint: #7d745c;
+    --accent: #e3a542;
+    --accent-strong: #f0bc6c;
+    --accent-ink: #1d1200;
+    --accent-tint: #3a2b0e;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='light'] {
+  --ink: #1c1810;
+  --paper: #f6f3ea;
+  --paper-raised: #fffdf8;
+  --line: #ddd5bf;
+  --line-soft: #eae4d3;
+  --text: #2b2718;
+  --text-soft: #726b56;
+  --text-faint: #9a927a;
+  --accent: #c8801e;
+  --accent-strong: #a8690f;
+  --accent-ink: #2b1701;
+  --accent-tint: #f1e0c3;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --ink: #f1ece0;
+  --paper: #16140e;
+  --paper-raised: #201c14;
+  --line: #3a3323;
+  --line-soft: #2a251a;
+  --text: #efe9da;
+  --text-soft: #b3a98d;
+  --text-faint: #7d745c;
+  --accent: #e3a542;
+  --accent-strong: #f0bc6c;
+  --accent-ink: #1d1200;
+  --accent-tint: #3a2b0e;
+  color-scheme: dark;
+}
+
 html {
   color-scheme: light dark;
 }
 
 body {
   margin: 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    sans-serif;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---- reusable pieces -------------------------------------------------- */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.timecode {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.panel {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+.rec-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--rec);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--rec) 20%, transparent);
+  animation: rec-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes rec-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.btn {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 0.5rem 0.9rem;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    opacity 0.15s ease;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 1px solid var(--accent-strong);
+}
+
+.btn-accent:hover:not(:disabled) {
+  background: var(--accent-strong);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--text-faint);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }

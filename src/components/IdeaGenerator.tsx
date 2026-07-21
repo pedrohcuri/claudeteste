@@ -17,7 +17,10 @@ export function IdeaGenerator({ theme, onAdd }: Props) {
 
   if (!theme) {
     return (
-      <section className="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-6 text-center text-slate-500">
+      <section
+        className="p-6 text-center text-sm"
+        style={{ border: '1px dashed var(--line)', color: 'var(--text-faint)', borderRadius: '3px' }}
+      >
         Escolha um tema acima para gerar uma ideia de post.
       </section>
     )
@@ -45,32 +48,32 @@ export function IdeaGenerator({ theme, onAdd }: Props) {
   }
 
   return (
-    <section className="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-800">
-      <div className="flex items-center justify-between mb-3">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Gerar ideia · {theme.emoji} {theme.label}
+    <section className="panel p-4">
+      <div className="flex items-center justify-between mb-3 gap-3">
+        <h2 className="eyebrow flex items-center gap-2">
+          <span className="text-base leading-none">{theme.emoji}</span>
+          Gerar ideia · {theme.label}
         </h2>
-        <button
-          onClick={generate}
-          className="text-sm font-medium px-3 py-1.5 rounded-lg text-white"
-          style={{ backgroundColor: theme.color }}
-        >
+        <button onClick={generate} className="btn btn-accent focus-ring shrink-0">
           Gerar ideia
         </button>
       </div>
       <textarea
         value={draft}
         onChange={(e) => setDraft(e.target.value)}
-        placeholder="Clique em 'Gerar ideia' ou escreva a sua própria..."
+        placeholder="Clique em “Gerar ideia” ou escreva a sua própria..."
         rows={3}
-        className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent p-3 text-sm text-slate-900 dark:text-slate-100"
+        className="focus-ring w-full p-3 text-sm"
+        style={{
+          background: 'transparent',
+          border: '1px solid var(--line)',
+          borderRadius: '3px',
+          color: 'var(--text)',
+          resize: 'vertical',
+        }}
       />
       <div className="flex justify-end mt-2">
-        <button
-          onClick={add}
-          disabled={!draft.trim()}
-          className="text-sm font-medium px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600 disabled:opacity-40 text-slate-900 dark:text-slate-100"
-        >
+        <button onClick={add} disabled={!draft.trim()} className="btn btn-outline focus-ring">
           Adicionar ao quadro
         </button>
       </div>

@@ -17,14 +17,19 @@ interface Props {
 export function KanbanBoard({ ideas, themesById, onMove, onDelete }: Props) {
   return (
     <section>
-      <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-3">Seu quadro de conteúdo</h2>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <h2 className="eyebrow mb-3">Seu quadro de conteúdo</h2>
+      <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: 'var(--line)' }}>
         {COLUMNS.map((col, colIndex) => (
-          <div key={col.id} className="rounded-xl bg-slate-100 dark:bg-slate-900/50 p-3 min-h-[8rem]">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">{col.label}</h3>
-              <span className="text-xs text-slate-500">
-                {ideas.filter((i) => i.status === col.id).length}
+          <div key={col.id} className="p-3 min-h-32" style={{ background: 'var(--paper)' }}>
+            <div
+              className="flex items-center justify-between mb-3 pb-2"
+              style={{ borderBottom: '1px solid var(--line)' }}
+            >
+              <h3 className="eyebrow" style={{ color: 'var(--text-soft)' }}>
+                {col.label}
+              </h3>
+              <span className="timecode text-xs" style={{ color: 'var(--text-faint)' }}>
+                {String(ideas.filter((i) => i.status === col.id).length).padStart(2, '0')}
               </span>
             </div>
             <div className="space-y-2">
@@ -35,19 +40,29 @@ export function KanbanBoard({ ideas, themesById, onMove, onDelete }: Props) {
                   return (
                     <div
                       key={idea.id}
-                      className="rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3 text-sm"
+                      className="p-3 text-sm"
+                      style={{
+                        background: 'var(--paper-raised)',
+                        border: '1px solid var(--line)',
+                        borderLeft: `3px solid ${theme?.color ?? 'var(--line)'}`,
+                        borderRadius: '2px',
+                      }}
                     >
-                      <div className="flex items-center gap-1 text-xs text-slate-500 mb-1">
+                      <div className="eyebrow flex items-center gap-1 mb-1.5" style={{ color: 'var(--text-faint)' }}>
                         <span>{theme?.emoji}</span>
                         <span>{theme?.label}</span>
                       </div>
-                      <p className="text-slate-900 dark:text-slate-100 mb-2">{idea.title}</p>
+                      <p className="mb-2" style={{ color: 'var(--text)' }}>
+                        {idea.title}
+                      </p>
                       <div className="flex items-center justify-between">
                         <div className="flex gap-1">
                           {colIndex > 0 && (
                             <button
                               onClick={() => onMove(idea.id, COLUMNS[colIndex - 1].id)}
-                              className="text-xs px-2 py-0.5 rounded border border-slate-300 dark:border-slate-600"
+                              className="btn btn-outline focus-ring"
+                              style={{ padding: '0.15rem 0.5rem' }}
+                              aria-label={`Mover para ${COLUMNS[colIndex - 1].label}`}
                             >
                               ←
                             </button>
@@ -55,7 +70,9 @@ export function KanbanBoard({ ideas, themesById, onMove, onDelete }: Props) {
                           {colIndex < COLUMNS.length - 1 && (
                             <button
                               onClick={() => onMove(idea.id, COLUMNS[colIndex + 1].id)}
-                              className="text-xs px-2 py-0.5 rounded border border-slate-300 dark:border-slate-600"
+                              className="btn btn-outline focus-ring"
+                              style={{ padding: '0.15rem 0.5rem' }}
+                              aria-label={`Mover para ${COLUMNS[colIndex + 1].label}`}
                             >
                               →
                             </button>
@@ -63,7 +80,10 @@ export function KanbanBoard({ ideas, themesById, onMove, onDelete }: Props) {
                         </div>
                         <button
                           onClick={() => onDelete(idea.id)}
-                          className="text-xs text-slate-400 hover:text-red-500"
+                          className="eyebrow focus-ring"
+                          style={{ color: 'var(--text-faint)' }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--rec)')}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-faint)')}
                         >
                           remover
                         </button>
@@ -71,6 +91,11 @@ export function KanbanBoard({ ideas, themesById, onMove, onDelete }: Props) {
                     </div>
                   )
                 })}
+              {ideas.filter((i) => i.status === col.id).length === 0 && (
+                <p className="text-xs" style={{ color: 'var(--text-faint)' }}>
+                  —
+                </p>
+              )}
             </div>
           </div>
         ))}

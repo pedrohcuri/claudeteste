@@ -10,19 +10,32 @@ export function ThemeCard({ theme, onPick, active }: Props) {
   return (
     <button
       onClick={() => onPick(theme)}
-      className={`text-left rounded-xl border p-4 transition shadow-sm hover:shadow-md ${
-        active ? 'border-transparent ring-2 ring-offset-2' : 'border-slate-200 dark:border-slate-700'
-      }`}
-      style={active ? { boxShadow: `0 0 0 2px ${theme.color}` } : undefined}
+      className="focus-ring panel text-left p-4 transition-colors"
+      style={{
+        borderTop: `3px solid ${theme.color}`,
+        background: active ? `color-mix(in srgb, ${theme.color} 10%, var(--paper-raised))` : 'var(--paper-raised)',
+      }}
     >
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-2xl">{theme.emoji}</span>
-        <span className="font-semibold text-slate-900 dark:text-slate-100">{theme.label}</span>
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-2">
+          <span className="text-xl leading-none">{theme.emoji}</span>
+          <span className="font-semibold" style={{ color: 'var(--text)' }}>
+            {theme.label}
+          </span>
+        </div>
+        {active && (
+          <span
+            className="eyebrow shrink-0 ml-2"
+            style={{ color: theme.color }}
+          >
+            ativo
+          </span>
+        )}
       </div>
-      <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+      <ul className="text-sm space-y-1.5" style={{ color: 'var(--text-soft)' }}>
         {theme.angles.slice(0, 3).map((angle) => (
-          <li key={angle} className="line-clamp-1">
-            • {angle}
+          <li key={angle} className="line-clamp-1 pl-3" style={{ borderLeft: '2px solid var(--line)' }}>
+            {angle}
           </li>
         ))}
       </ul>
