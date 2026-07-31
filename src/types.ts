@@ -31,3 +31,24 @@ export interface Idea {
   format?: IdeaFormat
   createdAt: string
 }
+
+// "The Money Talks" — frente separada, conteúdo generalista de mercado/
+// carreira/startups. Formato próprio: uma frase de impacto na tela +
+// legenda que contextualiza (diferente do padrão gancho+ângulo do resto).
+export type MoneyTalkPillarId = 'gastos-viagens'
+
+export interface MoneyTalkPillar {
+  id: MoneyTalkPillarId
+  label: string
+  emoji: string
+  tone: string
+}
+
+export interface MoneyTalkIdea {
+  id: string
+  pillar: MoneyTalkPillarId
+  phrase: string
+  caption: string
+  status: IdeaStatus
+  createdAt: string
+}

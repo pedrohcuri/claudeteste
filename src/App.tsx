@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { THEMES } from './data/themes'
-import type { Idea, IdeaStatus, Theme } from './types'
+import type { Idea, IdeaStatus, MoneyTalkIdea, Theme } from './types'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { ThemeCard } from './components/ThemeCard'
 import { TrendsPanel } from './components/TrendsPanel'
@@ -8,6 +8,8 @@ import { ReferencePanel } from './components/ReferencePanel'
 import { IdeaGenerator } from './components/IdeaGenerator'
 import { TextStoryGenerator } from './components/TextStoryGenerator'
 import { KanbanBoard } from './components/KanbanBoard'
+import { MoneyTalksGenerator } from './components/MoneyTalksGenerator'
+import { MoneyTalksBoard } from './components/MoneyTalksBoard'
 
 const NUDGES = [
   'Postar imperfeito hoje vale mais que postar perfeito nunca.',
@@ -26,6 +28,7 @@ function todayTimecode() {
 
 function App() {
   const [ideas, setIdeas] = useLocalStorage<Idea[]>('bora-postar:ideas', [])
+  const [moneyIdeas, setMoneyIdeas] = useLocalStorage<MoneyTalkIdea[]>('money-talks:ideas', [])
   const [selectedThemeId, setSelectedThemeId] = useState<Theme['id'] | null>(null)
   const nudge = useMemo(() => NUDGES[Math.floor(Math.random() * NUDGES.length)], [])
   const today = useMemo(() => todayTimecode(), [])
@@ -47,6 +50,18 @@ function App() {
 
   function deleteIdea(id: string) {
     setIdeas((prev) => prev.filter((i) => i.id !== id))
+  }
+
+  function addMoneyIdea(idea: MoneyTalkIdea) {
+    setMoneyIdeas((prev) => [idea, ...prev])
+  }
+
+  function moveMoneyIdea(id: string, status: IdeaStatus) {
+    setMoneyIdeas((prev) => prev.map((i) => (i.id === id ? { ...i, status } : i)))
+  }
+
+  function deleteMoneyIdea(id: string) {
+    setMoneyIdeas((prev) => prev.filter((i) => i.id !== id))
   }
 
   return (
@@ -106,7 +121,38 @@ function App() {
         <KanbanBoard ideas={ideas} themesById={themesById} onMove={moveIdea} onDelete={deleteIdea} />
       </main>
 
-      <footer className="max-w-5xl mx-auto px-4 pb-8">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex items-center gap-3 py-2" aria-hidden="true">
+          <div className="flex-1" style={{ borderTop: '1px dashed var(--line)' }} />
+          <span className="eyebrow" style={{ color: 'var(--text-faint)' }}>
+            outra frente
+          </span>
+          <div className="flex-1" style={{ borderTop: '1px dashed var(--line)' }} />
+        </div>
+      </div>
+
+      <section style={{ borderTop: '1px solid var(--line)', background: 'var(--paper-raised)' }}>
+        <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xl leading-none">🎢</span>
+              <h2 className="text-xl font-bold tracking-tight" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
+                The Money Talks
+              </h2>
+            </div>
+            <p className="mt-1 text-sm max-w-md" style={{ color: 'var(--text-soft)' }}>
+              Conteúdo generalista de mercado, carreira e startups. Formato: uma frase de impacto + legenda que
+              contextualiza — não o gancho+ângulo do resto do app.
+            </p>
+          </div>
+
+          <MoneyTalksGenerator onAdd={addMoneyIdea} />
+
+          <MoneyTalksBoard ideas={moneyIdeas} onMove={moveMoneyIdea} onDelete={deleteMoneyIdea} />
+        </div>
+      </section>
+
+      <footer className="max-w-5xl mx-auto px-4 py-8">
         <p className="eyebrow" style={{ color: 'var(--text-faint)' }}>
           Bora Postar · salvo neste navegador
         </p>
