@@ -9,6 +9,7 @@ import { IdeaGenerator } from './components/IdeaGenerator'
 import { TextStoryGenerator } from './components/TextStoryGenerator'
 import { KanbanBoard } from './components/KanbanBoard'
 import { MoneyTalksGenerator } from './components/MoneyTalksGenerator'
+import { TipListPanel } from './components/TipListPanel'
 import { MoneyTalksBoard } from './components/MoneyTalksBoard'
 
 const NUDGES = [
@@ -145,6 +146,8 @@ function App() {
               contextualiza — não o gancho+ângulo do resto do app.
             </p>
           </div>
+
+          <TipListPanel onAdd={addMoneyIdea} />
 
           <MoneyTalksGenerator onAdd={addMoneyIdea} />
 

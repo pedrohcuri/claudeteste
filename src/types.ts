@@ -52,3 +52,15 @@ export interface MoneyTalkIdea {
   status: IdeaStatus
   createdAt: string
 }
+
+// Formato "lista de dicas": roteiro numerado + legenda, curado à mão
+// (cresce por curadoria, não por combinação aleatória como o gerador).
+export interface TipList {
+  id: string
+  pillar: MoneyTalkPillarId
+  title: string
+  hook: string
+  tips: string[]
+  closing: string
+  caption: string
+}
